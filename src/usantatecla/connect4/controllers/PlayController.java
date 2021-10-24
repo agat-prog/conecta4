@@ -41,4 +41,6 @@ public abstract class PlayController extends AcceptorController{
 	public boolean isNull() {
 		return false;
 	}
+
+	public abstract void nextState();
 }

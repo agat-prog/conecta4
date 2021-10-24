@@ -6,7 +6,8 @@ import usantatecla.connect4.views.Message;
 public class StartView{
 
     public void interact(StartController startController) {
-        new MessageView().writeln(Message.TITLE);
+    	startController.start();
+    	new MessageView().writeln(Message.TITLE);
         new BoardView().write(startController);
     }
 
