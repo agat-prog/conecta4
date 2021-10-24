@@ -1,18 +1,22 @@
 package usantatecla.connect4.controllers;
 
 import usantatecla.connect4.models.Session;
+import usantatecla.connect4.models.SessionImpl;
 
 public class RedoController extends Controller {
 
-	RedoController(Session session) {
+	private SessionImpl sessionImpl;
+	
+	public RedoController(Session session) {
 		super(session);
+		this.sessionImpl = ((SessionImpl) this.session);
 	}
 
-	void redo() {
-		this.session.redo();
+	public void redo() {
+		this.sessionImpl.redo();
 	}
 
-	boolean redoable() {
-		return this.session.redoable();
+	public boolean redoable() {
+		return this.sessionImpl.redoable();
 	}
 }

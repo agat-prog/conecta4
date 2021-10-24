@@ -10,18 +10,21 @@ abstract class Connect4 {
     private Logic logic;
 
     protected Connect4() {
-        this.logic = new Logic();
-        this.view = this.createView();
+        this.logic = this.createLogic();
+        this.view = new View();
     }
 
-    protected abstract View createView();
+    protected abstract Logic createLogic();
 
     protected void play() {
-        AcceptorController controller;
-        do {
-            controller = logic.getController();
-            controller.accept(this.view);
-        } 
-        while (!controller.isNull());
+        
+		AcceptorController acceptorController;
+	    do {
+	    	acceptorController = logic.getController();
+	        if (acceptorController != null){
+				this.view.interact(acceptorController);
+	        } 
+	    }while (!acceptorController.isNull());
     }
+
 }
