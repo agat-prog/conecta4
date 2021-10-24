@@ -2,7 +2,7 @@ package usantatecla.connect4.controllers;
 
 import usantatecla.connect4.models.Session;
 
-public class NullController extends Controller implements AcceptorController {
+public class NullController extends  AcceptorController {
 
 	NullController(Session session) {
 		super(session);

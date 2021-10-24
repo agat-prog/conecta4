@@ -2,16 +2,14 @@ package usantatecla.connect4.controllers;
 
 import usantatecla.connect4.models.Session;
 
-public class ResumeController extends Controller implements AcceptorController{
+public abstract class ResumeController extends AcceptorController{
 
 
     public ResumeController(Session session) {
 		super(session);
 	}
 
-	public void reset() {
-        this.session.reset();
-    }
+	public abstract void reset();
 
     @Override
     public void accept(ControllersVisitor controllersVisitor) {

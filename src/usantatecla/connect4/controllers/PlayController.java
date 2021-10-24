@@ -4,7 +4,7 @@ import usantatecla.connect4.models.Session;
 import usantatecla.connect4.types.Color;
 import usantatecla.connect4.types.Error;
 
-public class PlayController extends Controller implements AcceptorController{
+public abstract class PlayController extends AcceptorController{
 
 	private ActionController actionController;
     private UndoController undoController;
@@ -12,51 +12,30 @@ public class PlayController extends Controller implements AcceptorController{
 	
     public PlayController(Session session) {
         super(session);
-        this.actionController = new ActionController(session);
-        this.undoController = new UndoController(session);
-        this.redoController = new RedoController(session);
     }
 
-	public boolean isConnect4() {
-        return this.actionController.isConnect4();
-    }
+	public abstract boolean isConnect4();
 
-    public void next() {
-        this.actionController.next();
-    }
+    public abstract void next();
 
-    public Color getActiveColor() {
-        return this.actionController.getActiveColor();
-    }
+    public abstract Color getActiveColor();
 
-    public void putToken(int column) {
-        this.actionController.putToken(column);
-    }
+    public abstract void putToken(int column);
 
-    public Error getPutTokenError(int column) {
-        return this.actionController.getPutTokenError(column);
-    }
+    public abstract Error getPutTokenError(int column);
 
+    @Override
     public void accept(ControllersVisitor controllersVisitor) {
         controllersVisitor.visit(this);
     }
+    public abstract void undo();
 
-    public void undo(){
-        this.undoController.undo();
-    }
-
-    public boolean undoable(){
-        return this.undoController.undoable();
-    }
+    public abstract boolean undoable();
 
 
-    public boolean redoable(){
-        return this.redoController.redoable();
-    }
+    public abstract boolean redoable();
 
-	public void redo() {
-		this.redoController.redo();
-	}
+	public abstract void redo();
 
 	@Override
 	public boolean isNull() {

@@ -1,7 +1,12 @@
 package usantatecla.connect4.controllers;
 
-public interface AcceptorController {
+public abstract class AcceptorController extends Controller{
 
-	void accept(ControllersVisitor controllerVisitor);
-    boolean isNull();
+	AcceptorController(Session session) {
+		super(session);
+    }
+    
+    public abstract boolean isNull();
+
+	public abstract void accept(ControllersVisitor controllerVisitor);
 }

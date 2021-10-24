@@ -2,7 +2,7 @@ package usantatecla.connect4.controllers;
 
 import usantatecla.connect4.models.Session;
 
-public class StartController extends Controller implements AcceptorController{
+public abstract class StartController extends AcceptorController{
 
     public StartController(Session session) {
 		super(session);
@@ -12,6 +12,8 @@ public class StartController extends Controller implements AcceptorController{
         controllersVisitor.visit(this);
     }
 
+	public abstract void start();
+	
 	@Override
 	public boolean isNull() {
 		return false;
