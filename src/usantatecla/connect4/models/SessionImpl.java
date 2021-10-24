@@ -50,14 +50,14 @@ public class SessionImpl implements Session{
 		this.registry.register();
 	}
 	
-	public Color getColor(Coordinate coordinate) {
-		return this.game.getColor(coordinate);
-	}
-	
 	public boolean isConect4() {
 		return this.game.isConnect4();
 	}
 
+	public Color getColor(Coordinate coordinate) {
+		return this.game.getColor(coordinate);
+	}
+	
 	public Color getActiveColor() {
 		return this.game.getActiveColor();
 	}

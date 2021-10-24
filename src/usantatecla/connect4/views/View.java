@@ -10,35 +10,32 @@ import usantatecla.connect4.views.console.ResumeView;
 import usantatecla.connect4.views.console.StartView;
 
 public class View implements ControllersVisitor {
-	 
-		private StartView startView;
 
-		private PlayView playView;
+	private StartView startView;
 
-		private ResumeView resumeView;
+	private PlayView playView;
 
-		public View() {
-			this.startView = new StartView();
-			this.playView = new PlayView();
-			this.resumeView = new ResumeView();
-		}
+	private ResumeView resumeView;
 
-		public void interact(AcceptorController acceptorController) {
-			acceptorController.accept(this);
-		}
+	public View() {
+		this.startView = new StartView();
+		this.playView = new PlayView();
+		this.resumeView = new ResumeView();
+	}
 
-		
-		public void visit(StartController startController) {
-			this.startView.interact(startController);
-		}
+	public void interact(AcceptorController acceptorController) {
+		acceptorController.accept(this);
+	}
 
-		
-		public void visit(PlayController playController) {
-			this.playView.interact(playController);
-		}
+	public void visit(StartController startController) {
+		this.startView.interact(startController);
+	}
 
-		
-		public void visit(ResumeController resumeController) {
-			this.resumeView.interact(resumeController);
-		}
+	public void visit(PlayController playController) {
+		this.playView.interact(playController);
+	}
+
+	public void visit(ResumeController resumeController) {
+		this.resumeView.interact(resumeController);
+	}
 }

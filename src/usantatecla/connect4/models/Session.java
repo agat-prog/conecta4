@@ -7,4 +7,5 @@ public interface Session {
 	
 	public StateValue getValueState();
 	public Color getColor(Coordinate coordinate);
+	public Color getActiveColor();
 }

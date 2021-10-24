@@ -4,6 +4,7 @@ import usantatecla.connect4.models.Session;
 import usantatecla.connect4.models.SessionImpl;
 import usantatecla.connect4.types.Color;
 import usantatecla.connect4.types.Error;
+import usantatecla.utils.models.Coordinate;
 
 public class ActionController extends Controller{
 
@@ -28,6 +29,10 @@ public class ActionController extends Controller{
 
 	public Color getActiveColor() {
 		return this.sessionImpl.getActiveColor();
+	}
+	
+	public Color getColor(Coordinate coordinate) {
+		return this.sessionImpl.getColor(coordinate);
 	}
 
 	public void putToken(int column) {
