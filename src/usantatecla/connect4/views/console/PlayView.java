@@ -11,6 +11,6 @@ public class PlayView {
         } 
         while (!playController.isConnect4());
         new MessageView().writeln(Message.PLAYER_WIN, playController.getActiveColor().toString());
-        playController.next();
+        playController.nextState();
     }
 }

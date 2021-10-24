@@ -21,6 +21,10 @@ public class ActionController extends Controller{
 	public void next() {
         this.sessionImpl.next();
     }
+	
+	public void nextState() {
+        this.sessionImpl.nextState();
+    }
 
 	public Color getActiveColor() {
 		return this.sessionImpl.getActiveColor();

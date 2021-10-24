@@ -29,6 +29,9 @@ public class PlayControllerImpl extends PlayController{
         this.actionController.next();
     }
 
+    public void nextState() {
+        this.actionController.nextState();
+    }
     public Color getActiveColor() {
         return this.actionController.getActiveColor();
     }

@@ -1,6 +1,6 @@
 package usantatecla.connect4.controllers;
 
-import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.Map;
 
 import usantatecla.connect4.models.Session;
@@ -12,7 +12,7 @@ public class Logic {
     protected Map<StateValue, AcceptorController> acceptorControllers;
 
     public Logic() {
-        this.acceptorControllers = new EnumMap<>(StateValue.class);
+        this.acceptorControllers = new HashMap<StateValue, AcceptorController>();
     }
 
     public AcceptorController getController() {
