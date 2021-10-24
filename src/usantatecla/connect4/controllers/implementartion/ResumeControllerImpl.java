@@ -1,4 +1,4 @@
-package usantatecla.connect4.controllers.implementation;
+package usantatecla.connect4.controllers.implementartion;
 
 import usantatecla.connect4.controllers.ResumeController;
 import usantatecla.connect4.models.Session;
@@ -13,9 +13,11 @@ public class ResumeControllerImpl extends ResumeController{
 		this.sessionImpl= (SessionImpl) this.session;
 	}
 
-	@Override
-	public void reset() {
-        this.session.reset();
-    }
-
+	public void resume(boolean resume) {
+		if(resume) {
+			this.sessionImpl.reset();
+		}else {
+			this.sessionImpl.next();
+		}
+	}
 }

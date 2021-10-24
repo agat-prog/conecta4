@@ -1,22 +1,26 @@
-package usantatecla.connect4.controllers.implementation;
+package usantatecla.connect4.controllers.implementartion;
 
+import usantatecla.connect4.controllers.ActionController;
 import usantatecla.connect4.controllers.PlayController;
+import usantatecla.connect4.controllers.RedoController;
+import usantatecla.connect4.controllers.UndoController;
 import usantatecla.connect4.models.Session;
+import usantatecla.connect4.types.Color;
+import usantatecla.connect4.types.Error;
 
 public class PlayControllerImpl extends PlayController{
-
-	public PlayControllerImpl(Session session) {
-		// TODO Auto-generated constructor stub
-	}
 
 	private ActionController actionController;
     private UndoController undoController;
     private RedoController redoController;
-	
-    public PlayController(Session session) {
-        super(session);
-    }
 
+    public PlayControllerImpl(Session session) {
+		super(session);
+		this.actionController= new ActionController(this.session);
+		this.undoController= new UndoController(this.session);
+		this.redoController= new RedoController(this.session);
+	}
+    
 	public boolean isConnect4() {
         return this.actionController.isConnect4();
     }

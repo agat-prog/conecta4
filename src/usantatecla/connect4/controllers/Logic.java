@@ -8,11 +8,10 @@ import usantatecla.connect4.models.StateValue;
 
 public class Logic {
 
-    private Session session;
-    private Map<StateValue, AcceptorController> acceptorControllers;
+    protected Session session;
+    protected Map<StateValue, AcceptorController> acceptorControllers;
 
     public Logic() {
-        this.session = new Session();
         this.acceptorControllers = new EnumMap<>(StateValue.class);
     }
 

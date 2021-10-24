@@ -1,9 +1,7 @@
-package usantatecla.connect4.controllers.implementation;
+package usantatecla.connect4.controllers.implementartion;
 
 import usantatecla.connect4.controllers.Logic;
-import usantatecla.connect4.controllers.PlayController;
-import usantatecla.connect4.controllers.ResumeController;
-import usantatecla.connect4.controllers.StartController;
+import usantatecla.connect4.controllers.NullController;
 import usantatecla.connect4.models.SessionImpl;
 import usantatecla.connect4.models.StateValue;
 

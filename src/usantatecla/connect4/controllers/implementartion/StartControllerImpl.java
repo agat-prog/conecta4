@@ -1,4 +1,4 @@
-package usantatecla.connect4.controllers.implementation;
+package usantatecla.connect4.controllers.implementartion;
 
 import usantatecla.connect4.controllers.StartController;
 import usantatecla.connect4.models.Session;
