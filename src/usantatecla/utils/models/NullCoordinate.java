@@ -2,7 +2,9 @@ package usantatecla.utils.models;
 
 class NullCoordinate implements Coordinate {
 
-    private static NullCoordinate instance;
+	private static final long serialVersionUID = 4118921419704665536L;
+	
+	private static NullCoordinate instance;
 
     static Coordinate getInstance() {
         if (NullCoordinate.instance == null) {

@@ -1,7 +1,5 @@
 package usantatecla.connect4.models;
 
-import java.util.Arrays;
-
 import usantatecla.connect4.types.Color;
 import usantatecla.utils.models.ConcreteCoordinate;
 import usantatecla.utils.models.Coordinate;
@@ -28,7 +26,13 @@ public class Board {
     }
     
     Color[][] copy(){
-    	return Arrays.stream(this.colors).map(Color[]::clone).toArray(Color[][]::new);
+    	Color[][] copia = new Color[Board.ROWS][Board.COLUMNS];
+        for (int i = 0; i < Board.ROWS; i++) {
+            for (int j = 0; j < Board.COLUMNS; j++) {
+            	copia[i][j] = this.colors[i][j];
+            }
+        }
+    	return copia;
     }
 
     void putToken(int column, Color color) {

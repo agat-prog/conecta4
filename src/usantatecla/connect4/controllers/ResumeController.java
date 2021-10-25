@@ -9,8 +9,8 @@ public abstract class ResumeController extends AcceptorController{
 		super(session);
 	}
 
-	public abstract void reset();
-
+	public abstract void resume(boolean resume);
+	
     @Override
     public void accept(ControllersVisitor controllersVisitor) {
         controllersVisitor.visit(this);

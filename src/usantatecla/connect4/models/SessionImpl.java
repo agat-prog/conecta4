@@ -1,6 +1,10 @@
 package usantatecla.connect4.models;
 
-public class SessionImpl extends Session{
+import usantatecla.connect4.types.Color;
+import usantatecla.utils.models.Coordinate;
+import usantatecla.connect4.types.Error;
+
+public class SessionImpl implements Session{
     private State state;
 	private Game game;
 	private Registry registry;
@@ -46,14 +50,14 @@ public class SessionImpl extends Session{
 		this.registry.register();
 	}
 	
-	public Color getColor(Coordinate coordinate) {
-		return this.game.getColor(coordinate);
-	}
-	
 	public boolean isConect4() {
 		return this.game.isConnect4();
 	}
 
+	public Color getColor(Coordinate coordinate) {
+		return this.game.getColor(coordinate);
+	}
+	
 	public Color getActiveColor() {
 		return this.game.getActiveColor();
 	}
@@ -66,7 +70,7 @@ public class SessionImpl extends Session{
 		return this.game.getPutTokenError(column);
 	}
 
-	public Object getValueState() {
+	public StateValue getValueState() {
 		return this.state.getValueState();
 	}
 }

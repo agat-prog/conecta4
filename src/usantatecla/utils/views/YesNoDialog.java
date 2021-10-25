@@ -12,7 +12,7 @@ public class YesNoDialog {
 		YesNoDialog.NEGATIVE + "'";
 	private String answer;
 
-	public void read(String message) {
+	public boolean read(String message) {
 		assert message != null;
 
 		Console console = Console.getInstance();
@@ -25,6 +25,7 @@ public class YesNoDialog {
 				console.writeln(YesNoDialog.MESSAGE);
 			}
 		} while (!ok);
+		return this.isAffirmative();
 	}
 	
 	public boolean isAffirmative() {

@@ -1,6 +1,8 @@
 package usantatecla.utils.models;
 
-public interface Coordinate {
+import java.io.Serializable;
+
+public interface Coordinate extends Serializable {
   
   static Coordinate NULL = NullCoordinate.getInstance();
   boolean isNull();

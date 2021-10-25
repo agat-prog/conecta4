@@ -2,6 +2,8 @@ package usantatecla.utils.models;
 
 public class ConcreteCoordinate implements Coordinate {
 	
+	private static final long serialVersionUID = 9103589587536493463L;
+	
 	public static final String ROW = "Row: ";
 	public static final String COLUMN = "Column: ";
 	protected int row;
