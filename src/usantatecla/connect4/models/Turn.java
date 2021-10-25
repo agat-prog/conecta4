@@ -53,9 +53,4 @@ public class Turn {
 	public void setPlayerPutTokens(Color color, int playerPutTokens) {
 		 this.players[color.ordinal()].set(playerPutTokens);
 	}
-
-//	public boolean areAllTokensOnBoard() {
-//		return this.getActivePlayer().areAllTokensOnBoard();
-//	}
-
 }
