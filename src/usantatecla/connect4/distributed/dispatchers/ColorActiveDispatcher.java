@@ -13,9 +13,6 @@ public class ColorActiveDispatcher extends Dispatcher {
 	@Override
 	public void dispatch() {
 		Coordinate coordinate = (Coordinate) this.tcpip.receiveObject();
-		System.out.println("#################");
-		System.out.println(coordinate);
-		System.out.println("#################");
 		Color color = ((PlayController) this.acceptorController).getColor(coordinate);
 		this.tcpip.send(color.ordinal());
 	}

@@ -23,7 +23,6 @@ public class SessionProxy implements Session {
 	@Override
 	public Color getColor(Coordinate coordinate) {
 		this.tcpip.send(FrameType.COLOR.name());
-		System.out.println("Enviando -->" + coordinate);
 		this.tcpip.send(coordinate);
 		return Color.values()[this.tcpip.receiveInt()];
 	}

@@ -37,8 +37,8 @@ class Player {
 	public void set(int playerPutTokens) {
 		this.putTokens = playerPutTokens;
 	}
-//    
-//	boolean areAllTokensOnBoard() {
-//        return this.putTokens == Coordinate.DIMENSION;
-//    }
+
+	public int getPutTokens() {
+		return this.putTokens;
+	}
 }

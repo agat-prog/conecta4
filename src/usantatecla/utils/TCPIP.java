@@ -106,7 +106,6 @@ public class TCPIP {
 			objectOutputStream.flush();
 		} 
 		catch (IOException e) {
-			e.printStackTrace();
 			System.out.println("Error en servidor!!! Escritura de objeto en el outputstream");
 		}
 	}

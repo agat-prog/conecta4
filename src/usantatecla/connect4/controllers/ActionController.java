@@ -37,7 +37,6 @@ public class ActionController extends Controller{
 
 	public void putToken(int column) {
 		this.sessionImpl.putToken(column);
-		
 	}
 
 	public Error getPutTokenError(int column) {
