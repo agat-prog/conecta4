@@ -1,9 +1,15 @@
 package usantatecla.utils.models;
 
 import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import usantatecla.utils.models.ConcreteCoordinate;
+import usantatecla.utils.models.Direction;
+
 public class ConcreteCoordinateTest {
+	
+	private static final int MAX_COLS_ROWS = 7;
 
 	@Test
 	public void testGivenCoordinateWhenDirectionEastThenCoordinateEast() {
@@ -75,5 +81,31 @@ public class ConcreteCoordinateTest {
 		ConcreteCoordinate coordinateEast = coordinate.getInDirectionCoordinate(Direction.SOUTH_WEST);
 		Assert.assertTrue(coordinateEast.getColumn() == coordinate.getColumn() - 1);
 		Assert.assertTrue(coordinateEast.getRow() == coordinate.getRow() - 1);
+	}
+	
+	@Test
+	public void testGivenCoordinateWhenGetInDirectionAndInvalidAmountThenAssertionException() {
+		Assertions.assertThrows(AssertionError.class, () -> {
+			new ConcreteCoordinate().getInDirectionCoordinates(Direction.NORTH, Integer.MIN_VALUE);
+		});
+	}
+	
+	@Test
+	public void testGivenCoordinateWhenGetInDirectionAndMaxAmountThenAssertionException() {
+		Assertions.assertThrows(AssertionError.class, () -> {
+			new ConcreteCoordinate().getInDirectionCoordinates(Direction.NORTH, Integer.MAX_VALUE);
+		});
+	}
+	
+	@Test
+	public void testGivenCoordinateWhenGeInDirectionAmountThenArrayOfCoordinate() {
+		ConcreteCoordinate coordinate = new ConcreteCoordinate();
+		ConcreteCoordinate[] coordinateArray = coordinate.getInDirectionCoordinates(Direction.EAST, MAX_COLS_ROWS);
+		Assert.assertTrue(coordinateArray.length == MAX_COLS_ROWS);
+	}
+	
+	@Test
+	public void testGivenCoordinateWhenIsNullQuestionThenFalse() {
+		Assert.assertFalse(new ConcreteCoordinate().isNull());
 	}
 }

@@ -23,6 +23,8 @@ public class ConcreteCoordinate implements Coordinate {
 	}
 
 	public ConcreteCoordinate[] getInDirectionCoordinates(Direction direction, int amount){
+		assert amount > 0 && amount <= 7;
+		
 		ConcreteCoordinate[] coordinates = new ConcreteCoordinate[amount];
 		coordinates[0] = this;
 		for(int i=1; i<amount; i++){
