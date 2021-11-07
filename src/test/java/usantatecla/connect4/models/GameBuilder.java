@@ -1,6 +1,5 @@
 package usantatecla.connect4.models;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,8 +7,6 @@ import usantatecla.connect4.types.Color;
 
 public class GameBuilder {
 
-	
-	private Board board;
 	private Color color;
 	private String[] rows;
 	private Game game;
@@ -49,8 +46,7 @@ public class GameBuilder {
 		tokens.put('R', 0);
 		tokens.put('Y', 0);
 		for(int i=rows.length-1; i>= 0; i--) {
-			ArrayList<Integer> otherColorIndex = new ArrayList<>() ;
-			for(int j= 1; j<= this.board.COLUMNS; j++) {
+			for(int j= 1; j<= Board.COLUMNS; j++) {
 				char color = this.rows[i].charAt(j-1);
 				if(color == colorTurn) {
 					this.game.putToken(j);
@@ -68,8 +64,6 @@ public class GameBuilder {
 		}else if(tokens.get('R') >= tokens.get('Y') && colorTurn == 'R') {
 			this.game.next();
 		}
-		//if(tokens.get('R') < tokens.get('Y') || tokens.get('R') - tokens.get('Y') > 1)
-		//	throw new Exception("Incorrect board");
 	}
 	
 	public void putTokens(Board board, Color color) {

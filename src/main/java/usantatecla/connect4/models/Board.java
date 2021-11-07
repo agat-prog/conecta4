@@ -36,7 +36,9 @@ public class Board {
     }
 
     void putToken(int column, Color color) {
-        ConcreteCoordinate coordinate =  this.getEmptyCoordinate(column - 1);
+    	assert column > 0 && column <= COLUMNS;
+    	
+        Coordinate coordinate =  this.getEmptyCoordinate(column);
         this.colors[coordinate.getRow()][coordinate.getColumn()] = color;
     }
     
@@ -46,20 +48,25 @@ public class Board {
         this.colors[coordinate.getRow()][coordinate.getColumn()] = color;
     }
 
-    ConcreteCoordinate getEmptyCoordinate(int column) {
-        ConcreteCoordinate current = new ConcreteCoordinate(Board.ROWS-1, column);
+    Coordinate getEmptyCoordinate(int column) {
+    	assert column > 0 && column <= COLUMNS;
+    	
+        ConcreteCoordinate current = new ConcreteCoordinate(Board.ROWS - 1, column - 1);
         if (!this.isEmpty(current)) {
-            return null;
+        	return Coordinate.NULL;
         }
+        
         ConcreteCoordinate previous;
         do {
             previous = current;
             current = current.getInDirectionCoordinate(Direction.SOUTH);
-        } while (isValid(current) && this.isEmpty(current));
+        } 
+        while (isValid(current) && this.isEmpty(current));
+        
         return previous;
     }
 
-    private boolean isValid(ConcreteCoordinate coordinate) {
+    private boolean isValid(Coordinate coordinate) {
         return 0 <= coordinate.getRow() && coordinate.getRow() < Board.ROWS
                 && 0 <= coordinate.getColumn() && coordinate.getColumn() < Board.COLUMNS;
     }
@@ -76,7 +83,7 @@ public class Board {
     	return this.colors[coordinate.getRow()][coordinate.getColumn()];
     }
 
-    boolean isOccupied(ConcreteCoordinate coordinate, Color color) {
+    boolean isOccupied(Coordinate coordinate, Color color) {
         return this.getColor(coordinate) == color;
     }
 
@@ -91,7 +98,7 @@ public class Board {
         return false;
     }
 
-    boolean isConnect4(ConcreteCoordinate coordinate) {
+    boolean isConnect4(Coordinate coordinate) {
         for (Direction direction : new Direction[] { Direction.EAST, Direction.SOUTH_EAST, Direction.SOUTH, Direction.SOUTH_WEST }) {
             if (this.isConnect4(coordinate, direction)) {
                 return true;
@@ -100,11 +107,11 @@ public class Board {
         return false;
     }
 
-    boolean isConnect4(ConcreteCoordinate coordinate, Direction direction) {
+    boolean isConnect4(Coordinate coordinate, Direction direction) {
         assert !direction.isNull();
         assert this.isValid(coordinate);
 
-        ConcreteCoordinate[] coordinates = coordinate.getInDirectionCoordinates(direction, 4);
+        Coordinate[] coordinates = coordinate.getInDirectionCoordinates(direction, 4);
          for (int i = 0; i < coordinates.length - 1; i++) {
             if (!this.isValid(coordinates[i+1]) || this.getColor(coordinates[i]) != this.getColor(coordinates[i + 1])) {
                 return false;

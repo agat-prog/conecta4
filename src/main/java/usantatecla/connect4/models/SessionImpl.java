@@ -1,8 +1,8 @@
 package usantatecla.connect4.models;
 
 import usantatecla.connect4.types.Color;
-import usantatecla.utils.models.Coordinate;
 import usantatecla.connect4.types.Error;
+import usantatecla.utils.models.Coordinate;
 
 public class SessionImpl implements Session{
     private State state;

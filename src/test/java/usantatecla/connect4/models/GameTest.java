@@ -2,8 +2,7 @@ package usantatecla.connect4.models;
 
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.nullValue;
-import static org.hamcrest.BaseMatcher.*;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -48,7 +47,7 @@ public class GameTest {
 	}
 	
 	@Test
-	public void testGivenBoardWhenPutTokenFullColumnThenIsColorNull() {
+	public void testGivenBoardWhenPutTokenFullColumnThenPutTokenErrorNotNull() {
 		Game game = this.gameBuilder.rows(
 				"Y      ",
 				"R      ",
@@ -56,7 +55,6 @@ public class GameTest {
 				"R Y    ",
 				"YYRY   ",
 				"YRRRYRY").build();
-		game.putToken(1);
-		assertThat(game.getColor(new ConcreteCoordinate(6,1)), is(Color.NULL));
+		assertFalse(game.getPutTokenError(1).isNull());
 	}
 }

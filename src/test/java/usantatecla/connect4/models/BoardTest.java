@@ -1,10 +1,9 @@
 package usantatecla.connect4.models;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.nullValue;
-import static org.hamcrest.BaseMatcher.*;
 import static org.junit.Assert.assertThat;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -36,7 +35,7 @@ public class BoardTest {
 	@Test
 	public void testGivenNewBoardWhenPutNewTokenThenIsOccupiedIsTrue() {
 		Board board = this.boardBuilder.build();
-		ConcreteCoordinate coordinate = board.getEmptyCoordinate(columnSelected-1);
+		Coordinate coordinate = board.getEmptyCoordinate(columnSelected);
 		board.putToken(columnSelected, Color.YELLOW);
 		assertThat(board.isOccupied(coordinate, Color.YELLOW), is(true));
 	}	
@@ -44,7 +43,7 @@ public class BoardTest {
 	@Test
 	public void testGivenNewBoardWhenPutNewTokenThenIsOccupiedIsFalse() {
 		Board board = this.boardBuilder.build();
-		ConcreteCoordinate coordinate = board.getEmptyCoordinate(columnSelected-1);
+		Coordinate coordinate = board.getEmptyCoordinate(columnSelected);
 		assertThat(board.isOccupied(coordinate, Color.YELLOW), is(false));
 	}	
 	
@@ -58,7 +57,7 @@ public class BoardTest {
 				"       ",
 				"RYRRYYR"
 				).build();
-		assertThat(board.getEmptyCoordinate(columnSelected), is(new ConcreteCoordinate(1,1)));
+		assertThat(board.getEmptyCoordinate(columnSelected), is(new ConcreteCoordinate(1,0)));
 	}
 	
 	@Test
@@ -71,7 +70,7 @@ public class BoardTest {
 				"YRYRYRY",
 				"YRYRYRY"
 				).build();
-		assertThat(board.getEmptyCoordinate(columnSelected), nullValue());
+		assertThat(board.getEmptyCoordinate(columnSelected), is(Coordinate.NULL));
 	}
 	
 	@Test
@@ -158,5 +157,46 @@ public class BoardTest {
 		board.putToken(1, Color.RED);
 		
 		assertThat(board.getColor(new ConcreteCoordinate(0, 0)), is(Color.RED));
+	}
+	
+	@Test
+	public void givenBoardWhenPutTokenOnMaxColumnThenException() {
+		Assertions.assertThrows(AssertionError.class, () -> {
+			new Board().putToken(Integer.MAX_VALUE, Color.RED);
+		});
+	}
+	
+	@Test
+	public void givenBoardWhenPutTokenOnMinColumnThenException() {
+		Assertions.assertThrows(AssertionError.class, () -> {
+			new Board().putToken(Integer.MIN_VALUE, Color.RED);
+		});
+	}
+	
+	@Test
+	public void givenBoardWhenGetEmptyCoordinateOnMinColumnThenException() {
+		Assertions.assertThrows(AssertionError.class, () -> {
+			new Board().getEmptyCoordinate(Integer.MIN_VALUE);
+		});
+	}
+	
+	@Test
+	public void givenBoardWhenGetEmptyCoordinateOnMaxColumnThenException() {
+		Assertions.assertThrows(AssertionError.class, () -> {
+			new Board().getEmptyCoordinate(Integer.MAX_VALUE);
+		});
+	}
+	
+	static boolean isSameValues(Board board1, Board board2) {
+		boolean isSame = true;
+        for (int i = 0; i < Board.ROWS; i++) {
+            for (int j = 0; j < Board.COLUMNS; j++) {
+            	isSame = board1.getColor(new ConcreteCoordinate(i, j)).equals(board2.getColor(new ConcreteCoordinate(i, j)));
+            	if (!isSame) {
+            		return isSame;
+            	}
+            }
+        }
+        return isSame;
 	}
 }

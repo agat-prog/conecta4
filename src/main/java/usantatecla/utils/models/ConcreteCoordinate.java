@@ -6,8 +6,8 @@ public class ConcreteCoordinate implements Coordinate {
 	
 	public static final String ROW = "Row: ";
 	public static final String COLUMN = "Column: ";
-	protected int row;
-	protected int column;
+	private int row;
+	private int column;
 
 	public ConcreteCoordinate() {
 	}

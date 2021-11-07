@@ -22,8 +22,9 @@ public class Registry {
 
 	void register() {
 		for (int i = 0; i < this.firstPrevious; i++) {
-			this.mementos.remove(i);
+			this.mementos.remove(0);
 		}
+		
 		this.firstPrevious = 0;
 		this.mementos.add(this.firstPrevious, this.game.createMemento());
 	}

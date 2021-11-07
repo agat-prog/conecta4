@@ -28,6 +28,8 @@ public class Memento {
     }
 
     int getPlayerPutTokens(Color color) {
+    	assert !Color.NULL.equals(color);
+    	
         int playerPutTokens = 0;
         for (int i = 0; i < Board.ROWS; i++) {
             for (int j = 0; j < Board.COLUMNS; j++) {

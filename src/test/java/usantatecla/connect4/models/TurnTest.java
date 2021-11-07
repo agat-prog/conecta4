@@ -1,8 +1,6 @@
 package usantatecla.connect4.models;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.nullValue;
-import static org.hamcrest.BaseMatcher.*;
 import static org.junit.Assert.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
