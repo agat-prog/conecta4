@@ -22,6 +22,7 @@ public class SessionImpl implements Session{
 	}
 	
 	public void nextState() {
+		assert this.state.getValueState() != null;
 		this.state.next();
 	}
 	
