@@ -1,20 +1,15 @@
 package usantatecla.connect4.models;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static org.mockito.MockitoAnnotations.initMocks;
+import org.mockito.MockitoAnnotations;
 
 import usantatecla.connect4.types.Color;
 import usantatecla.utils.models.ConcreteCoordinate;
@@ -32,7 +27,7 @@ public class GameTestMockito {
 	
 	@BeforeEach
 	public void setup() {
-		initMocks(this);
+		MockitoAnnotations.openMocks(this);
 	}
 	
 	@Test
